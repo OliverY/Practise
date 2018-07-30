@@ -27,6 +27,8 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
     private EditText etScore;
     private DashBoardView dashBoard;
 
+    int score;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +49,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_set_score:
-                int score = Integer.parseInt(etScore.getText().toString());
+                score = Integer.parseInt(etScore.getText().toString());
                 dashBoard.setScore(score);
                 break;
             case R.id.btn_random_score:

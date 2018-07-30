@@ -4,8 +4,10 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
@@ -30,6 +32,8 @@ public class DashBoardView extends View {
     int indexArcColor = Color.WHITE;
     int bgPaintAlpha = 60;
     int bgPaintLightAlpha = 120;
+
+    int DEFAULT_SIZE = 0;
 
     int score = 590;// 分数
     int lastScore = 350;
@@ -169,6 +173,33 @@ public class DashBoardView extends View {
 
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Log.e("yxj", "onMeasure");
+
+        int defaultSize = dp2px(DEFAULT_SIZE);
+        int padding = Math.max(Math.max(getPaddingLeft(), getPaddingRight()), Math.max(getPaddingTop(), getPaddingBottom()));
+        padding = Math.max(padding,defaultSize);
+
+        setMeasuredDimension(measureSize(widthMeasureSpec, defaultSize), measureSize(heightMeasureSpec, defaultSize));
+    }
+
+    private int measureSize(int measureSpec, int defaultSize) {
+        int mode = MeasureSpec.getMode(measureSpec);
+        int size = MeasureSpec.getSize(measureSpec);
+        switch (mode) {
+            case MeasureSpec.EXACTLY:
+                defaultSize = size;
+            case MeasureSpec.AT_MOST:
+
+                break;
+            case MeasureSpec.UNSPECIFIED:
+                break;
+        }
+        return defaultSize;
+    }
+
     private void drawOuterArc(Canvas canvas) {
         int radius = calculateOuterRadius();
         int left = -radius;
@@ -199,6 +230,16 @@ public class DashBoardView extends View {
 
         outerPath.addArc(rectF, bgStartAngle, sweepAngle);
         canvas.drawPath(outerPath, indexArcPaint);
+
+        float[] posArray = new float[2];
+        float[] tanArray = new float[2];
+
+        PathMeasure pathMeasure = new PathMeasure(outerPath, false);
+        pathMeasure.getPosTan(pathMeasure.getLength(), posArray, tanArray);
+
+        Matrix matrix = new Matrix();
+        matrix.postTranslate(posArray[0] + 100, posArray[1]);
+        canvas.drawCircle(posArray[0], posArray[1], 5, indexArcPaint);
     }
 
     private int calculateIndexSweepAngle() {
@@ -291,9 +332,7 @@ public class DashBoardView extends View {
         return (int) Math.round(Math.min(mHeight - paddingTop - paddingBottom, mWidth) * 1f / 2 + 0.5);
     }
 
-    public void setScore(int score) {
-        this.score = score;
-
+    public void setScore(final int score) {
         setRank(score);
 
         ValueAnimator animator = ValueAnimator.ofInt(lastScore, score);
@@ -305,6 +344,10 @@ public class DashBoardView extends View {
                 int value = (int) animation.getAnimatedValue();
                 DashBoardView.this.score = value;
                 invalidate();
+
+                if(animation.getAnimatedFraction() == 1f){
+                    lastScore = score;
+                }
             }
         });
         animator.start();
@@ -319,5 +362,15 @@ public class DashBoardView extends View {
             }
         }
         rank = new String().format("信用%s", segmentArray[index - 1]);
+    }
+
+    protected int dp2px(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return (int) (dp * density + 0.5);
+    }
+
+    protected int sp2px(int sp) {
+        float density = getResources().getDisplayMetrics().scaledDensity;
+        return (int) (sp * density + 0.5);
     }
 }
