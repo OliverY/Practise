@@ -2,12 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg_dash_board">
+    android:background="@drawable/bg_dash_board"
+    android:orientation="vertical">
 
     <com.yxj.practise.test.antboard.DashBoardView
+        android:id="@+id/dash_board"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:padding="10dp"/>
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_set_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置值" />
+
+            <Button
+                android:id="@+id/btn_random_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="随机值" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

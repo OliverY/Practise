@@ -1,5 +1,6 @@
 package com.yxj.practise.test.antboard;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
 /**
  * Author:  Yxj
@@ -22,17 +24,21 @@ import android.view.View;
 public class DashBoardView extends View {
 
     Paint bgPaint;
+    Paint indexArcPaint;
     int bgPaintColor = Color.WHITE;
     int scoreTextColor = Color.WHITE;
+    int indexArcColor = Color.WHITE;
     int bgPaintAlpha = 60;
     int bgPaintLightAlpha = 120;
 
-    int score = 572;// 分数
+    int score = 590;// 分数
+    int lastScore = 350;
     String rank = "信用极好";
 
     private TextPaint indexPaint;
     private TextPaint scorePaint;
     int indexTextSize = 35; // index文字大小
+    int scoreTextSize = 200; // index文字大小
 
     private int bgStartAngle, bgSweepAngle;
     private int outerWidth = 10;    // 外圆线宽
@@ -76,9 +82,15 @@ public class DashBoardView extends View {
         indexPaint.setColor(bgPaintColor);
         indexPaint.setTextSize(indexTextSize);
 
+        indexArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        indexArcPaint.setColor(indexArcColor);
+        indexArcPaint.setStyle(Paint.Style.STROKE);
+        indexArcPaint.setStrokeJoin(Paint.Join.ROUND);
+        indexArcPaint.setStrokeWidth(outerWidth);
+
         scorePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         scorePaint.setColor(scoreTextColor);
-        scorePaint.setTextSize(200);
+        scorePaint.setTextSize(scoreTextSize);
 
         bgStartAngle = 160;
         bgSweepAngle = 220;
@@ -107,28 +119,33 @@ public class DashBoardView extends View {
 
         canvas.restore();
 
+        drawIndexArc(canvas);
+
+//        canvas.drawLine(0,0,100,0,bgPaint);
+
         // 画表盘
         drawScore(canvas);
     }
 
     private void drawScore(Canvas canvas) {
-        String word = score+"";
+        String word = score + "";
+        scorePaint.setTextSize(scoreTextSize);
         int scoreWidth = (int) scorePaint.measureText(word);
-        int scoreStartX = -scoreWidth/2;
+        int scoreStartX = -scoreWidth / 2;
         int scoreStartY = 0;
-        canvas.drawText(score+"",scoreStartX,scoreStartY,scorePaint);
+        canvas.drawText(score + "", scoreStartX, scoreStartY, scorePaint);
 
         scorePaint.setTextSize(80);
         int rankWidth = (int) scorePaint.measureText(rank);
-        int rankStartX = -rankWidth/2;
+        int rankStartX = -rankWidth / 2;
         int rankStartY = 100;
-        canvas.drawText(rank,rankStartX,rankStartY,scorePaint);
+        canvas.drawText(rank, rankStartX, rankStartY, scorePaint);
 
         String time = "评估时间：2018-07-28";
         int timeWidth = (int) indexPaint.measureText(time);
-        int timeStartX = -timeWidth/2;
-        int timeStartY = (int) (rankStartY + scorePaint.getTextSize()/2+indexPaint.getTextSize()/2+10);
-        canvas.drawText(time,timeStartX,timeStartY,indexPaint);
+        int timeStartX = -timeWidth / 2;
+        int timeStartY = (int) (rankStartY + scorePaint.getTextSize() / 2 + indexPaint.getTextSize() / 2 + 10);
+        canvas.drawText(time, timeStartX, timeStartY, indexPaint);
     }
 
 
@@ -162,8 +179,44 @@ public class DashBoardView extends View {
         Path outerPath = new Path();
         RectF rectF = new RectF(left, top, right, bottom);
 
+        bgPaint.setStrokeWidth(outerWidth);
+
         outerPath.addArc(rectF, bgStartAngle, bgSweepAngle);
         canvas.drawPath(outerPath, bgPaint);
+    }
+
+    private void drawIndexArc(Canvas canvas) {
+        int radius = calculateOuterRadius();
+        int left = -radius;
+        int right = radius;
+        int top = -radius;
+        int bottom = radius;
+
+        Path outerPath = new Path();
+        RectF rectF = new RectF(left, top, right, bottom);
+
+        int sweepAngle = calculateIndexSweepAngle();
+
+        outerPath.addArc(rectF, bgStartAngle, sweepAngle);
+        canvas.drawPath(outerPath, indexArcPaint);
+    }
+
+    private int calculateIndexSweepAngle() {
+        int index = 0;
+        int sweepAngle = 0;
+        for (int i = 0; i < indexArray.length; i++) {
+            if (Integer.parseInt(indexArray[i]) > score) {
+                index = i;
+                break;
+            }
+        }
+        if (index < 0) {
+            return 0;
+        }
+        int start = Integer.parseInt(indexArray[index - 1]);
+        int end = Integer.parseInt(indexArray[index]);
+        sweepAngle = (index - 1) * (sweepGap * 2) + (int) Math.round((score - start) * 1f / (end - start) * (sweepGap * 2) + 0.5);
+        return sweepAngle;
     }
 
     private void drawInnerArc(Canvas canvas) {
@@ -238,4 +291,33 @@ public class DashBoardView extends View {
         return (int) Math.round(Math.min(mHeight - paddingTop - paddingBottom, mWidth) * 1f / 2 + 0.5);
     }
 
+    public void setScore(int score) {
+        this.score = score;
+
+        setRank(score);
+
+        ValueAnimator animator = ValueAnimator.ofInt(lastScore, score);
+        animator.setDuration(1000);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int value = (int) animation.getAnimatedValue();
+                DashBoardView.this.score = value;
+                invalidate();
+            }
+        });
+        animator.start();
+    }
+
+    public void setRank(int score) {
+        int index = 0;
+        for (int i = 0; i < indexArray.length; i++) {
+            if (Integer.parseInt(indexArray[i]) > score) {
+                index = i;
+                break;
+            }
+        }
+        rank = new String().format("信用%s", segmentArray[index - 1]);
+    }
 }
