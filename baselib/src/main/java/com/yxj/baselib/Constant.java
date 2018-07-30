@@ -14,6 +14,8 @@ public interface Constant {
 
     String PATH_RESPONSIBLE_LINK2 = "/yxj/ResponsibleLinkActivity2";
 
+    String PATH_ADVERTISE = "/yxj/Advertise";
+
     String PATH_DASH_BOARD = "/yxj/dashBoard";
 
     String PATH_MODULEA_A = "/modulea/a";

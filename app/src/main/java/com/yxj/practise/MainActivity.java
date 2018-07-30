@@ -57,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance().build(Constant.PATH_DASH_BOARD).navigation();
             }
         });
+
+        findViewById(R.id.btn_ad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(Constant.PATH_ADVERTISE).navigation();
+            }
+        });
     }
 
 }
