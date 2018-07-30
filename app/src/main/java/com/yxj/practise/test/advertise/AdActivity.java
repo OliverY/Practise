@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.yxj.baselib.Constant;
 import com.yxj.practise.R;
+import com.yxj.practise.test.advertise.bean.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +28,12 @@ public class AdActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_ad);
 
-        AdView ad = findViewById(R.id.ad);
-        List<String> data = new ArrayList<>();
-        data.add("this is no 1");
-        data.add("this is no 2");
-        data.add("this is no 3");
-        data.add("this is no 4");
+        BaseAdView<Data> ad = findViewById(R.id.ad);
+        List<Data> data = new ArrayList<>();
+        data.add(new Data(R.mipmap.user_head_boy,"this is no 1"));
+        data.add(new Data(R.mipmap.user_head_girl,"this is no 2"));
+        data.add(new Data(R.mipmap.user_head_boy,"this is no 3"));
+        data.add(new Data(R.mipmap.user_head_girl,"this is no 4"));
 
         ad.setData(data);
     }
