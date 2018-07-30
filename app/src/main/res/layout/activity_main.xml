@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_nestedscroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NestedScroll" />
+
+    <Button
+        android:id="@+id/btn_edit_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edittext filter" />
+
+    <Button
+        android:id="@+id/btn_router_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="router" />
+
+    <Button
+        android:id="@+id/btn_response_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="responsible link" />
+
+    <Button
+        android:id="@+id/btn_response_link2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="responsible link2" />
+
+    <Button
+        android:id="@+id/btn_dash_board"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dash board" />
+
+</LinearLayout>

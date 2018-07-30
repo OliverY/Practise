@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yxj.practise.test.nestedscroll.NestedScrollParentView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#024872" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="center_horizontal"
+        android:background="#ccc"
+        android:text="This is the divider line" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ry"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</com.yxj.practise.test.nestedscroll.NestedScrollParentView>
