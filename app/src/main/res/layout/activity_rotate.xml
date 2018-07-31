@@ -23,19 +23,19 @@
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="绕z轴" />
+            android:text="绕x轴" />
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="绕x轴" />
+            android:text="绕y轴" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="绕y轴" />
+            android:text="绕z轴" />
 
     </LinearLayout>
 </LinearLayout>
