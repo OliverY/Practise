@@ -18,8 +18,8 @@ import java.util.List;
  * -----------------------------------------
  * Description:
  */
-@Route(path = Constant.PATH_CALEANDAR)
-public class CalendarActivity extends AppCompatActivity {
+@Route(path = Constant.PATH_CALEANDAR_2)
+public class Calendar2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -20,6 +20,8 @@ public interface Constant {
 
     String PATH_CALEANDAR = "/yxj/calendar";
 
+    String PATH_CALEANDAR_2 = "/yxj/calendar2";
+
     String PATH_ROTATE = "/yxj/rotate";
 
     String PATH_MODULEA_A = "/modulea/a";

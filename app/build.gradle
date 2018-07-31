@@ -41,4 +41,5 @@ dependencies {
 //        implementation project(path:":moduleb",configuration: 'default')
     }
     implementation files('libs/BASE64Encoder.jar')
+    implementation 'com.haibin:calendarview:3.4.0'
 }
