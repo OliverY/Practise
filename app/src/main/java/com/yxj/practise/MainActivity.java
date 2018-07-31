@@ -64,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance().build(Constant.PATH_ADVERTISE).navigation();
             }
         });
+
+        findViewById(R.id.btn_calendar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(Constant.PATH_CALEANDAR).navigation();
+            }
+        });
     }
 
 }

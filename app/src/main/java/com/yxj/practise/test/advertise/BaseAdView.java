@@ -26,8 +26,8 @@ public abstract class BaseAdView<T> extends FrameLayout {
     private Animation ANI_IN;
     private Animation ANI_OUT;
 
-    private static final int IN = 1;
-    private static final int OUT = 2;
+    public static final int IN = 1;
+    public static final int OUT = 2;
 
     private List<T> data;
     private int current;
@@ -96,15 +96,7 @@ public abstract class BaseAdView<T> extends FrameLayout {
     }
 
     private Animation generateAnimation(int inOrOut){
-        TranslateAnimation animation = null;
-        if(inOrOut == IN){
-            animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,0,
-                    Animation.RELATIVE_TO_SELF,1,Animation.RELATIVE_TO_SELF,0);
-
-        }else if(inOrOut == OUT){
-            animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,0,
-                    Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,-1);
-        }
+        Animation animation = getAdAnimation(inOrOut);
         animation.setDuration(duration/2);
         animation.setFillAfter(true);
         animation.setStartOffset(duration/2);
@@ -112,13 +104,7 @@ public abstract class BaseAdView<T> extends FrameLayout {
         return animation;
     }
 
-//    private View generateChildView(){
-//        TextView textView = new TextView(getContext());
-//        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
-//        textView.setLayoutParams(params);
-//        textView.setGravity(Gravity.CENTER);
-//        return textView;
-//    }
+    public abstract Animation getAdAnimation(int inOrOut);
 
     private int dp2px(int dp){
         float density = getResources().getDisplayMetrics().density;
