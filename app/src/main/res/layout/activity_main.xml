@@ -1,59 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_nestedscroll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NestedScroll" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-    <Button
-        android:id="@+id/btn_edit_filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="edittext filter" />
+        <Button
+            android:id="@+id/btn_nestedscroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NestedScroll" />
 
-    <Button
-        android:id="@+id/btn_router_a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="router" />
+        <Button
+            android:id="@+id/btn_edit_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="edittext filter" />
 
-    <Button
-        android:id="@+id/btn_response_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="responsible link" />
+        <Button
+            android:id="@+id/btn_router_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="router" />
 
-    <Button
-        android:id="@+id/btn_response_link2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="responsible link2" />
+        <Button
+            android:id="@+id/btn_response_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="responsible link" />
 
-    <Button
-        android:id="@+id/btn_dash_board"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="dash board" />
+        <Button
+            android:id="@+id/btn_response_link2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="responsible link2" />
 
-    <Button
-        android:id="@+id/btn_ad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="vertical advertise view" />
+        <Button
+            android:id="@+id/btn_dash_board"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dash board" />
 
-    <Button
-        android:id="@+id/btn_calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="calendar" />
+        <Button
+            android:id="@+id/btn_ad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vertical advertise view" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="calendar" />
+
+        <Button
+            android:id="@+id/btn_rotate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rotate" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
