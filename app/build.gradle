@@ -42,4 +42,6 @@ dependencies {
     }
     implementation files('libs/BASE64Encoder.jar')
     implementation 'com.haibin:calendarview:3.4.0'
+    implementation files('libs/bcprov-jdk16-1.46.jar')
+    implementation files('libs/commons-lang3-3.7.jar')
 }

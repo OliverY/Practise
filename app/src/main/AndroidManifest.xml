@@ -26,6 +26,7 @@
         <activity android:name=".test.advertise.AdActivity"/>
         <activity android:name=".test.calendar.CalendarActivity"/>
         <activity android:name=".test.rotate3d.RotateActivity"/>
+        <activity android:name=".test.nestedscroll.NestedScrollActivity"/>
         <!--<activity android:name=".test.router.SchemeFilterActivity">-->
             <!--<intent-filter>-->
                 <!--<data-->

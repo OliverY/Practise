@@ -1,7 +1,8 @@
 package com.yxj.practise.test.encode.SM4;
 
 import com.yxj.practise.test.encode.RadixUtil;
-import com.yxj.practise.test.encode.StringUtils;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.util.regex.Matcher;

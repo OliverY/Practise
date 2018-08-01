@@ -22,6 +22,8 @@ public interface Constant {
 
     String PATH_CALEANDAR_2 = "/yxj/calendar2";
 
+    String PATH_NESTED_SCROLL = "/yxj/nestedScroll";
+
     String PATH_ROTATE = "/yxj/rotate";
 
     String PATH_MODULEA_A = "/modulea/a";
