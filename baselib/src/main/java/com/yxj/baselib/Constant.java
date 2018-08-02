@@ -24,6 +24,8 @@ public interface Constant {
 
     String PATH_NESTED_SCROLL = "/yxj/nestedScroll";
 
+    String PATH_DATA_BINDING = "/yxj/dataBinding";
+
     String PATH_ROTATE = "/yxj/rotate";
 
     String PATH_MODULEA_A = "/modulea/a";

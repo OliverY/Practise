@@ -92,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance().build(Constant.PATH_NESTED_SCROLL).navigation();
             }
         });
+
+        findViewById(R.id.btn_data_binding).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(Constant.PATH_DATA_BINDING).navigation();
+            }
+        });
     }
 
 }
