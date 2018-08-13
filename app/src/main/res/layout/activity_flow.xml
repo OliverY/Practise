@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发射" />
+
+    <com.yxj.practise.test.flow.FlowLayout
+        android:id="@+id/flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CCC">
+
+
+    </com.yxj.practise.test.flow.FlowLayout>
+
+    <!--<com.yxj.practise.test.flow.XFlowLayout-->
+        <!--android:id="@+id/flow"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#CCC">-->
+
+
+    <!--</com.yxj.practise.test.flow.XFlowLayout>-->
+
+</LinearLayout>

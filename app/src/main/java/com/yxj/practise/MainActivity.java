@@ -106,6 +106,13 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance().build(Constant.PATH_BARRAGE).navigation();
             }
         });
+
+        findViewById(R.id.btn_flow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(Constant.PATH_FLOW).navigation();
+            }
+        });
     }
 
 }

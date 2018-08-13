@@ -30,6 +30,8 @@ public interface Constant {
 
     String PATH_BARRAGE = "/yxj/barrage";
 
+    String PATH_FLOW = "/yxj/flow";
+
     String PATH_MODULEA_A = "/modulea/a";
 
     String PATH_MODULEB_B = "/moduleb/b";

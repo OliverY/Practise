@@ -53,7 +53,7 @@ public class BarrageView extends RelativeLayout {
         textView.setText(msg);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
         lp.topMargin = new Random().nextInt(row)*rowHeight;
-        Log.e("yxj","marginTop::"+lp.topMargin);
+//        Log.e("yxj","marginTop::"+lp.topMargin);
         textView.setLayoutParams(lp);
         addView(textView);
 
@@ -67,6 +67,9 @@ public class BarrageView extends RelativeLayout {
         int w = View.MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
         int h = View.MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
         textView.measure(w,h);
+
+        Log.e("yxj","w::"+w);
+        Log.e("yxj","h::"+h);
 
         ViewPropertyAnimator animator = textView.animate().translationXBy(mScreenWidth+textView.getMeasuredWidth());
         long duration = new Random().nextInt(2000)+3000;
