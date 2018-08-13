@@ -28,6 +28,7 @@
         <activity android:name=".test.rotate3d.RotateActivity"/>
         <activity android:name=".test.nestedscroll.NestedScrollActivity"/>
         <activity android:name=".test.mvvm.DataBindingActivity"/>
+        <activity android:name=".test.danmu.BarrageActivity"/>
         <!--<activity android:name=".test.router.SchemeFilterActivity">-->
             <!--<intent-filter>-->
                 <!--<data-->

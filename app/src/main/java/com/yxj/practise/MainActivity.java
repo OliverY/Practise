@@ -99,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance().build(Constant.PATH_DATA_BINDING).navigation();
             }
         });
+
+        findViewById(R.id.btn_barrage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(Constant.PATH_BARRAGE).navigation();
+            }
+        });
     }
 
 }
