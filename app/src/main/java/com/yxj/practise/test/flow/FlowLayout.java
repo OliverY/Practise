@@ -1,6 +1,7 @@
 package com.yxj.practise.test.flow;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -73,7 +74,6 @@ public class FlowLayout extends ViewGroup {
             measuredHeight = totalHeight<heightSize?totalHeight:heightSize;
         }
         setMeasuredDimension(measuredWidth,measuredHeight);
-
     }
 
     int currentL;
