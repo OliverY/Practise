@@ -94,6 +94,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="流式布局" />
+
+        <Button
+            android:id="@+id/btn_scroll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="嵌套滑动布局" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

@@ -30,6 +30,7 @@
         <activity android:name=".test.mvvm.DataBindingActivity"/>
         <activity android:name=".test.danmu.BarrageActivity"/>
         <activity android:name=".test.flow.FlowActivity"/>
+        <activity android:name=".test.scroll.NestedScrollActivity"/>
         <!--<activity android:name=".test.router.SchemeFilterActivity">-->
             <!--<intent-filter>-->
                 <!--<data-->
