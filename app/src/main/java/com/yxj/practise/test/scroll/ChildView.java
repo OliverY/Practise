@@ -55,9 +55,7 @@ public class ChildView extends View implements NestedScrollingChild {
                 mDownX = x;
                 mDownY = y;
 
-                Log.e(TAG,"has parent view ::"+getParent());
                 startNestedScroll(ViewCompat.SCROLL_AXIS_VERTICAL|ViewCompat.SCROLL_AXIS_HORIZONTAL);
-                Log.e(TAG,"has parent view ::"+hasNestedScrollingParent());
                 break;
             case MotionEvent.ACTION_MOVE:
                 int dx = x - mDownX;
@@ -70,8 +68,6 @@ public class ChildView extends View implements NestedScrollingChild {
                 if(dispatchNestedPreScroll(dx,dy,consumed,offsetInWindow)){
                     dx -= consumed[0];
                     dy -= consumed[1];
-
-                    Log.e(TAG,"消耗 dx="+dx);
                 }
 
                 offsetLeftAndRight(dx);
